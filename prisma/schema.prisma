@@ -36,6 +36,18 @@ model Like {
     @@index([quackId])
 }
 
+model Post {
+    id          Int      @id @default(autoincrement())
+    name        String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    createdBy   User     @relation(fields: [createdById], references: [id])
+    createdById String
+
+    @@index([name])
+    @@index([createdById])
+}
+
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -74,6 +86,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Post          Post[]
 
     // Non Next Auth
     quacks    Quack[]
