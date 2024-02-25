@@ -12,17 +12,28 @@ datasource db {
     relationMode = "prisma"
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+model Quack {
+    id        String   @id @default(uuid())
+    userId    String
+    content   String
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
+    user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    likes Like[]
 
-    @@index([name])
-    @@index([createdById])
+    @@index([userId])
+}
+
+model Like {
+    userId  String
+    quackId String
+
+    user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+    quack Quack @relation(fields: [quackId], references: [id], onDelete: Cascade)
+
+    @@id([userId, quackId])
+    @@index([userId])
+    @@index([quackId])
 }
 
 // Necessary for Next auth
@@ -63,7 +74,12 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+
+    // Non Next Auth
+    quacks    Quack[]
+    likes     Like[]
+    followers User[]  @relation(name: "Followers")
+    follows   User[]  @relation(name: "Followers")
 }
 
 model VerificationToken {
