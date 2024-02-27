@@ -10,23 +10,23 @@ type Quack = {
   createdAt: Date;
   likeCount: number;
   likedByMe: boolean;
-  user: { id: string; image: string | null; name: string };
+  user: { id: string; image: string | null; name: string | null };
 };
 
 type InfiniteQuackListProps = {
   isLoading: boolean;
   isError: boolean;
-  hasMore: boolean;
+  hasMore: boolean | undefined;
   fetchNewQuacks: () => Promise<unknown>;
   quacks?: Quack[];
 };
 
 export function InfiniteQuackList({
-  quacks,
-  isError,
   isLoading,
+  isError,
   hasMore,
   fetchNewQuacks,
+  quacks,
 }: InfiniteQuackListProps) {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
@@ -42,7 +42,7 @@ export function InfiniteQuackList({
       <InfiniteScroll
         dataLength={quacks.length}
         next={fetchNewQuacks}
-        hasMore={hasMore}
+        hasMore={hasMore || false}
         loader={"Loading infinite scroll..."}
       >
         {quacks.map((quack) => {

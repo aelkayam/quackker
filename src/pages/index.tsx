@@ -23,11 +23,11 @@ function RecentQuacks() {
 
   return (
     <InfiniteQuackList
-      quacks={quacks.data?.pages.flatMap((page) => page.quacks)}
-      isError={quacks.isError}
       isLoading={quacks.isLoading}
+      isError={quacks.isError}
       hasMore={quacks.hasNextPage}
       fetchNewQuacks={quacks.fetchNextPage}
+      quacks={quacks.data?.pages.flatMap((page) => page.quacks)}
     />
   );
 }
