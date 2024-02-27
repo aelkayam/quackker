@@ -42,7 +42,7 @@ export function InfiniteQuackList({
       <InfiniteScroll
         dataLength={quacks.length}
         next={fetchNewQuacks}
-        hasMore={hasMore || false}
+        hasMore={hasMore ?? false}
         loader={"Loading infinite scroll..."}
       >
         {quacks.map((quack) => {
@@ -67,7 +67,7 @@ function QuackCard({
   likedByMe,
 }: Quack) {
   return (
-    <li className="flex gap-4 border-b px-4 py-4">
+    <li id={id} className="flex gap-4 border-b px-4 py-4">
       <Link href={`/profiles/${user.id}`}>
         <ProfileImage src={user.image} />
       </Link>

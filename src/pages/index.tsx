@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import { InfiniteQuackList } from "~/components/InfiniteQuackList";
 import { NewQuackForm } from "~/components/NewQuackForm";
 import { api } from "~/utils/api";

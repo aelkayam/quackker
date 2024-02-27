@@ -1,14 +1,9 @@
 import { useSession } from "next-auth/react";
 import { Button } from "./Button";
 import { ProfileImage } from "./ProfileImage";
-import {
-  FormEvent,
-  useCallback,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { api } from "~/utils/api";
+import type { FormEvent } from "react";
 
 export function NewQuackForm() {
   const session = useSession();
@@ -39,7 +34,7 @@ function Form() {
   }, [inputValue]);
 
   const createQuack = api.quack.create.useMutation({
-    onSuccess: (newQuack) => {
+    onSuccess: () => {
       setInputValue("");
     },
   });
