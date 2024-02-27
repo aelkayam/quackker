@@ -13,7 +13,7 @@ import { api } from "~/utils/api";
 export function NewQuackForm() {
   const session = useSession();
 
-  if (session.status !== "authenticated") return;
+  if (session.status !== "authenticated") return null;
 
   return <Form />;
 }
@@ -40,7 +40,6 @@ function Form() {
 
   const createQuack = api.quack.create.useMutation({
     onSuccess: (newQuack) => {
-      console.log(newQuack);
       setInputValue("");
     },
   });
