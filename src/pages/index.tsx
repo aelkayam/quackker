@@ -4,6 +4,8 @@ import { useState } from "react";
 import { InfiniteQuackList } from "~/components/InfiniteQuackList";
 import { NewQuackForm } from "~/components/NewQuackForm";
 import { api } from "~/utils/api";
+import { Providers } from "./providers";
+import ThemeSwitch from "~/components/ThemeSwitch";
 
 const TABS = ["Recent", "Following"] as const;
 
@@ -13,31 +15,38 @@ const Home: NextPage = () => {
   const session = useSession();
   return (
     <>
-      <header className="sticky top-0 z-10 border-b bg-white pt-2 ">
-        <h1 className="mb-2 px-4 text-lg font-bold ">Home</h1>
-        {session.status == "authenticated" && (
-          <div className="flex">
-            {TABS.map((tab) => {
-              return (
-                <button
-                  key={tab}
-                  className={`flex-grow p-2 hover:bg-gray-200 focus-visible:bg-gray-200
+      <Providers>
+        <header className="sticky top-0 z-10 border-b bg-gray-300 pt-2 dark:bg-green-950 ">
+          <div className="flex items-center justify-between">
+            <h1 className="mb-2 px-4 text-lg font-bold ">Home</h1>
+            <div className="mb-2 px-4">
+              <ThemeSwitch />
+            </div>
+          </div>
+          {session.status == "authenticated" && (
+            <div className="flex">
+              {TABS.map((tab) => {
+                return (
+                  <button
+                    key={tab}
+                    className={`flex-grow p-2 hover:bg-gray-200 focus-visible:bg-gray-200 dark:hover:bg-gray-700 dark:focus-visible:bg-gray-700
                   ${
                     tab === selectedTab
-                      ? "border-b-4 border-b-yellow-500 font-bold"
+                      ? "border-b-4 border-b-yellow-400 font-bold"
                       : ""
                   }`}
-                  onClick={() => setSelectedTab(tab)}
-                >
-                  {tab}
-                </button>
-              );
-            })}
-          </div>
-        )}
-      </header>
-      <NewQuackForm />
-      {selectedTab === "Recent" ? <RecentQuacks /> : <FollowingQuacks />}
+                    onClick={() => setSelectedTab(tab)}
+                  >
+                    {tab}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </header>
+        <NewQuackForm />
+        {selectedTab === "Recent" ? <RecentQuacks /> : <FollowingQuacks />}
+      </Providers>
     </>
   );
 };
