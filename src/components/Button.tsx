@@ -18,11 +18,11 @@ export function Button({
   const sizeClasses = small ? "px-2 py-1" : " px-4 py 2 font-bold";
   const coloClasses = gray
     ? "bg-gray-400 hover:bg-gray-300 focus-visible: bg-gray-300"
-    : "bg-yellow-500 hover:bg-yellow-400 focus-visible: bg-yellow-400";
+    : "bg-yellow-500 hover:bg-yellow-400 focus-visible: bg-yellow-300";
 
   return (
     <button
-      className={`rounded-full text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50 
+      className={`rounded-full text-black transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50 
       ${sizeClasses} ${coloClasses} ${className}`}
       {...props}
     ></button>

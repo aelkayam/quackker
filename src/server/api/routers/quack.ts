@@ -66,4 +66,21 @@ export const quackRouter = createTRPCRouter({
       });
       return quack;
     }),
+
+  toggleLike: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input: { id }, ctx }) => {
+      const data = { quackId: id, userId: ctx.session.user.id };
+      const existingQuack = await ctx.db.like.findUnique({
+        where: { userId_quackId: data },
+      });
+
+      if (existingQuack == null) {
+        await ctx.db.like.create({ data });
+        return { addedLike: true };
+      } else {
+        await ctx.db.like.delete({ where: { userId_quackId: data } });
+        return { addedLike: false };
+      }
+    }),
 });
