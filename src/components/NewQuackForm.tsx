@@ -23,19 +23,47 @@ function Form() {
   const session = useSession();
   const [inputValue, setInputValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>();
-
   const inputRef = useCallback((textArea: HTMLTextAreaElement) => {
     updateTextAreaSize(textArea);
     textAreaRef.current = textArea;
   }, []);
+  const trpcUtill = api.useUtils();
 
   useLayoutEffect(() => {
     updateTextAreaSize(textAreaRef.current);
   }, [inputValue]);
 
   const createQuack = api.quack.create.useMutation({
-    onSuccess: () => {
+    onSuccess: (newQuack) => {
       setInputValue("");
+
+      if (session.status !== "authenticated") return;
+
+      trpcUtill.quack.infiniteFeed.setInfiniteData({}, (oldData) => {
+        if (oldData == null || oldData.pages[0] == null) return;
+
+        const newCacheQuack = {
+          ...newQuack,
+          likeCount: 0,
+          likedByMe: false,
+          user: {
+            id: session.data?.user.id,
+            name: session.data?.user.name || null,
+            image: session.data?.user.image || null,
+          },
+        };
+
+        return {
+          ...oldData,
+          pages: [
+            {
+              ...oldData.pages[0],
+              quacks: [newCacheQuack, ...oldData.pages[0].quacks],
+            },
+            ...oldData.pages.slice(1),
+          ],
+        };
+      });
     },
   });
 

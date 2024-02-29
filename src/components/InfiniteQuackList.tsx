@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 import { IconHoverEffect } from "./IconHoverEffect";
 import { api } from "~/utils/api";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 type Quack = {
   id: string;
@@ -26,11 +27,11 @@ type InfiniteQuackListProps = {
 export function InfiniteQuackList({
   isLoading,
   isError,
-  hasMore,
+  hasMore = false,
   fetchNewQuacks,
   quacks,
 }: InfiniteQuackListProps) {
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <LoadingSpinner big />;
   if (isError) return <h1>Error...</h1>;
 
   if (quacks == null || quacks.length === 0) {
@@ -44,8 +45,8 @@ export function InfiniteQuackList({
       <InfiniteScroll
         dataLength={quacks.length}
         next={fetchNewQuacks}
-        hasMore={hasMore ?? false}
-        loader={"Loading infinite scroll..."}
+        hasMore={hasMore}
+        loader={<LoadingSpinner />}
       >
         {quacks.map((quack) => {
           return <QuackCard key={quack.id} {...quack} />;
@@ -99,6 +100,14 @@ function QuackCard({
       };
 
       trpcUtils.quack.infiniteFeed.setInfiniteData({}, updateData);
+      trpcUtils.quack.infiniteFeed.setInfiniteData(
+        { onlyFollowing: true },
+        updateData,
+      );
+      trpcUtils.quack.infiniteProfileFeed.setInfiniteData(
+        { userId: user.id },
+        updateData,
+      );
     },
   });
 
