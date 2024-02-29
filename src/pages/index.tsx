@@ -4,7 +4,7 @@ import { useState } from "react";
 import { InfiniteQuackList } from "~/components/InfiniteQuackList";
 import { NewQuackForm } from "~/components/NewQuackForm";
 import { api } from "~/utils/api";
-import { Providers } from "./providers";
+import Providers from "./providers";
 import ThemeSwitch from "~/components/ThemeSwitch";
 
 const TABS = ["Recent", "Following"] as const;
