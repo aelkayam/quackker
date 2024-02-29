@@ -60,6 +60,9 @@ export const quackRouter = createTRPCRouter({
       const quack = await ctx.db.quack.create({
         data: { content, userId: ctx.session.user.id },
       });
+
+      void ctx.revalidateSSG?.(`profiles/${ctx.session.user.id}`);
+
       return quack;
     }),
 
