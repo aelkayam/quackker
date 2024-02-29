@@ -40,7 +40,7 @@ function Form() {
       if (session.status !== "authenticated") return;
 
       trpcUtill.quack.infiniteFeed.setInfiniteData({}, (oldData) => {
-        if (oldData == null || oldData.pages[0] == null) return;
+        if (oldData?.pages[0] == null) return;
 
         const newCacheQuack = {
           ...newQuack,
@@ -48,8 +48,8 @@ function Form() {
           likedByMe: false,
           user: {
             id: session.data?.user.id,
-            name: session.data?.user.name || null,
-            image: session.data?.user.image || null,
+            name: session.data?.user.name ?? null,
+            image: session.data?.user.image ?? null,
           },
         };
 
@@ -58,7 +58,7 @@ function Form() {
           pages: [
             {
               ...oldData.pages[0],
-              quacks: [newCacheQuack, ...oldData.pages[0].quacks],
+              quacks: [newCacheQuack, ...oldData.pages[0]?.quacks],
             },
             ...oldData.pages.slice(1),
           ],

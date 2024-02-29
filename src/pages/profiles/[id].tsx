@@ -10,7 +10,7 @@ import { api } from "~/utils/api";
 import ErrorPage from "next/error";
 import Link from "next/link";
 import { IconHoverEffect } from "~/components/IconHoverEffect";
-import { VscArrowCircleLeft, VscArrowLeft } from "react-icons/vsc";
+import { VscArrowLeft } from "react-icons/vsc";
 import { ProfileImage } from "~/components/ProfileImage";
 import { InfiniteQuackList } from "~/components/InfiniteQuackList";
 import { useSession } from "next-auth/react";

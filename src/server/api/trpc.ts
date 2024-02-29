@@ -7,7 +7,6 @@
  * need to use are documented accordingly near the end.
  */
 
-import { Prisma } from "@prisma/client";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
