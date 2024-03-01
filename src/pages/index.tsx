@@ -6,6 +6,8 @@ import { NewQuackForm } from "~/components/NewQuackForm";
 import { api } from "~/utils/api";
 import Providers from "./providers";
 import ThemeSwitch from "~/components/ThemeSwitch";
+import { GiDuck } from "react-icons/gi";
+import Link from "next/link";
 
 const TABS = ["Recent", "Following"] as const;
 
@@ -17,9 +19,12 @@ const Home: NextPage = () => {
     <>
       <Providers>
         <header className="sticky top-0 z-10 border-b bg-gray-300 pt-2 dark:bg-green-950 ">
-          <div className="flex items-center justify-between">
-            <h1 className="mb-2 px-4 text-lg font-bold ">Home</h1>
-            <div className="mb-2 px-4">
+          <div className="mb-2 flex items-center justify-between">
+            <h1 className="px-4 text-lg font-bold ">
+              <Link href="/">Home</Link>{" "}
+            </h1>
+            <GiDuck className="" size={24} />
+            <div className="px-4">
               <ThemeSwitch />
             </div>
           </div>

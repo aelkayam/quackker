@@ -25,10 +25,14 @@ export default function ThemeSwitch() {
     );
 
   if (resolvedTheme === "dark") {
-    return <FiSun size={24} onClick={() => setTheme("light")} />;
+    return (
+      <FiSun size={24} cursor="pointer" onClick={() => setTheme("light")} />
+    );
   }
 
   if (resolvedTheme === "light") {
-    return <FiMoon size={24} onClick={() => setTheme("dark")} />;
+    return (
+      <FiMoon size={24} cursor="pointer" onClick={() => setTheme("dark")} />
+    );
   }
 }
