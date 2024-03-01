@@ -1,29 +1,67 @@
-# Create T3 App
+# Quackker (Twitter Clone)
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Welcome to Quackker! Quackker is a Twitter-like social media web application built using Next.js, React, Tailwind CSS, Prisma, tRPC, and TypeScript.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **User Authentication**: Users can log in, and securely authenticate their accounts using Discord.
+- **Create and Share Quacks**: Users can write and share quacks (tweets) with the public.
+- **Global Feed and Personal Feed**: Users can follow other users to personalize their feed.
+- **Like Quacks**: Users can express their appreciation for quacks by liking them.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Technologies Used
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **Next.js**: Next.js is a React framework used for server-side rendering and building web applications.
+- **React**: React is a JavaScript library for building user interfaces.
+- **Tailwind CSS**: Tailwind CSS is a utility-first CSS framework used for styling the user interface.
+- **Prisma**: Prisma is an ORM (Object-Relational Mapping) tool used for database access and schema management.
+- **tRPC**: tRPC is a TypeScript-first RPC (Remote Procedure Call) framework used for building APIs.
+- **TypeScript**: TypeScript is a superset of JavaScript that adds static typing to the language.
 
-## Learn More
+## Usage
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+To use Quackker, simply visit the following URL: [Quackker Website](https://quackker.vercel.app/)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Getting Started
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+To get started with Quackker locally, follow these steps:
 
-## How do I deploy this?
+1. Clone the repository:
+   `git clone https://github.com/aelkayam/quackker.git`
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+2. Navigate to the project directory:
+   `cd quackker`
+   
+3. Install dependencies:
+
+    `npm install`
+    or
+    `yarn install`
+   
+4. Set up environment variables:
+   
+   - Copy the `.env.example` file and rename it to `.env`.
+   - Fill in the necessary environment variables such as database credentials and API keys.
+
+5. Run the development server:
+    `npm run dev`
+    or
+    `yarn dev`
+   
+6. Open your web browser and navigate to `http://localhost:3000` to view Quackker locally.
+
+## Contributing
+
+Contributions to Quackker are welcome! Feel free to open issues and pull requests for bug fixes, enhancements, or new features.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Happy Quacking! 🦆🎉
+
+
+   
+
