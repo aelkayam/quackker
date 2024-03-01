@@ -5,6 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import Head from "next/head";
 import SideNav from "~/components/SideNav";
+import Providers from "./providers";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,20 +13,22 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Head>
-        <title>Quackker</title>
-        <meta
-          name="description"
-          content="This is a twitter clone where you quack instead of tweet"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="container mx-auto flex items-start font-mono sm:pr-4">
-        <SideNav />
-        <div className="min-h-screen flex-grow border-x">
-          <Component {...pageProps} />
+      <Providers>
+        <Head>
+          <title>Quackker</title>
+          <meta
+            name="description"
+            content="This is a twitter clone where you quack instead of tweet"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className="container mx-auto flex items-start font-mono sm:pr-4">
+          <SideNav />
+          <div className="min-h-screen flex-grow border-x">
+            <Component {...pageProps} />
+          </div>
         </div>
-      </div>
+      </Providers>
     </SessionProvider>
   );
 };
