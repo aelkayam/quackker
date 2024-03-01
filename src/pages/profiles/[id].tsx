@@ -31,7 +31,6 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     onSuccess: ({ addedFollow }) => {
       trpcUtils.profile.getById.setData({ id }, (oldData) => {
         if (oldData == null) return;
-
         const countModifier = addedFollow ? 1 : -1;
 
         return {
