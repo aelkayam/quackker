@@ -6,17 +6,17 @@ Welcome to Quackker! Quackker is a Twitter-like social media web application bui
 
 - **User Authentication**: Users can log in, and securely authenticate their accounts using Discord/Google/GitHub.
 - **Create and Share Quacks**: Users can write and share quacks (tweets) with the public.
-- **Global Feed and Personal Feed**: Users can follow other users to personalize their feed.
+- **Global Feed and Personal Feed**: Users can follow other users just like in twitter.
 - **Like Quacks**: Users can express their appreciation for quacks by liking them.
 
-## Technologies Used
+## Tech Stack
 
-- **Next.js**: Next.js is a React framework used for server-side rendering and building web applications.
-- **React**: React is a JavaScript library for building user interfaces.
-- **Tailwind CSS**: Tailwind CSS is a utility-first CSS framework used for styling the user interface.
-- **Prisma**: Prisma is an ORM (Object-Relational Mapping) tool used for database access and schema management.
-- **tRPC**: tRPC is a TypeScript-first RPC (Remote Procedure Call) framework used for building APIs.
-- **TypeScript**: TypeScript is a superset of JavaScript that adds static typing to the language.
+- **Next.js**: Enables server-side rendering and web app development.
+- **React**: Powers dynamic user interfaces.
+- **Tailwind CSS**: streamlined UI styling.
+- **Prisma**: Simplifies database access and schema management.
+- **tRPC**: Builds robust TypeScript APIs.
+- **TypeScript**: Enhances codebase reliability and maintainability.
 
 ## Usage
 
