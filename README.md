@@ -4,7 +4,7 @@ Welcome to Quackker! Quackker is a Twitter-like social media web application bui
 
 ## Features
 
-- **User Authentication**: Users can log in, and securely authenticate their accounts using Discord.
+- **User Authentication**: Users can log in, and securely authenticate their accounts using Discord/Google/GitHub.
 - **Create and Share Quacks**: Users can write and share quacks (tweets) with the public.
 - **Global Feed and Personal Feed**: Users can follow other users to personalize their feed.
 - **Like Quacks**: Users can express their appreciation for quacks by liking them.
