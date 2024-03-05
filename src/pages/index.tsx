@@ -4,7 +4,6 @@ import { useState } from "react";
 import { InfiniteQuackList } from "~/components/InfiniteQuackList";
 import { NewQuackForm } from "~/components/NewQuackForm";
 import { api } from "~/utils/api";
-import Providers from "./providers";
 import ThemeSwitch from "~/components/ThemeSwitch";
 import { GiDuck } from "react-icons/gi";
 import Link from "next/link";
